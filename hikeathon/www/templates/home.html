@@ -4,7 +4,7 @@
     </ion-header-bar>
     <ion-content class="padding">
         <button class="button button-positive" ng-click="goTo('app')">Go to home</button>
-        <button class="button button-positive" ng-click="loginFacebook()">Facebook Login</button>
+        <button class="button button-positive" ng-click="loginFacebook()" ng-show="showLoginButton">Facebook Login</button>
         <div class="card">
             <div class="item item-text-wrap">{{ userDetails }}</div>
         </div>

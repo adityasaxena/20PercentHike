@@ -1,5 +1,5 @@
 angular.module('starter')
-    .controller('SensorCtrl', function($scope, wifi, accelometer, facebookData, $q, $timeout, orientation) {
+    .controller('SensorCtrl', function($scope, wifi, accelometer, $q, $timeout, orientation) {
 
         $scope.tryAcclometer = function() {
             accelometer.tryAcclometer();

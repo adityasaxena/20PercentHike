@@ -1,8 +1,19 @@
 angular.module('starter')
-  .service('facebookData', function($cordovaFacebook, $q) {
+  .service('fb', function($cordovaFacebook, $q) {
 
     var userID = null;
     var accessToken = null;
+
+    var getLoginStatus = function getLoginStatus() {
+      var deferred = $q.defer();
+      $cordovaFacebook.getLoginStatus()
+      .then(function(success) {
+        deferred.resolve(success);
+      }, function (error) {
+        deferred.reject(error);
+      });
+      return deferred.promise;
+    };
 
     var login = function() {
       var deferred = $q.defer();
@@ -23,6 +34,9 @@ angular.module('starter')
     };
 
     return {
-      login: login
+      userID: userID,
+      accessToken: accessToken,
+      login: login,
+      getLoginStatus: getLoginStatus
     };
   });
