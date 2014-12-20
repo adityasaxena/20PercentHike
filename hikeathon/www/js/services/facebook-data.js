@@ -38,10 +38,28 @@ angular.module('starter')
       return deferred.promise;
     };
 
+    var getProfile = function() {
+      var deferred = $q.defer();
+      $cordovaFacebook.api('me?fields=id,name, gender, birthday')
+        .then(function(success){
+          console.log(JSON.stringify(success));
+          var profile = {
+            name: success.name,
+            gender: success.gender,
+            birthday: success.birthday
+          };
+          deferred.resolve(profile);
+        }, function(error) {
+          // error
+        });
+      return deferred.promise;
+    };
+
     return {
       userID: userID,
       accessToken: accessToken,
       login: login,
-      getLoginStatus: getLoginStatus
+      getLoginStatus: getLoginStatus,
+      getProfile: getProfile
     };
   });

@@ -4,7 +4,7 @@ angular.module('starter')
 				fb.getLoginStatus()
 				.then(function(data) {
 					console.log('already logged in');
-					//now we need to call some facebook api's here to retrieve user data
+          getProfile();
 				}, function(error) {
 					$scope.showLoginButton = true;
 				});
@@ -14,6 +14,14 @@ angular.module('starter')
           promise.then(function(data) {
             console.log(JSON.stringify(data));
             $scope.userDetails = data;
+            getProfile();
           });
         };
+
+        function getProfile() {
+          var profilePromise = fb.getProfile();
+          profilePromise.then(function(data) {
+            $scope.userDetails = data;
+          })
+        }
     });
