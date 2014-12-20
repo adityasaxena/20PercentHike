@@ -20,4 +20,17 @@ angular.module('starter')
                 alert('Sorry No accelometer found');
             }
         };
+
+        $scope.showWifi = function(argument) {
+            navigator.wifi.getAccessPoints(function(data) {
+                alert(data);
+            }, function(data) {
+                alert(data);
+            });
+            navigator.wifi.watchAccessPoints(function(data) {
+                alert(data);
+            }, function(data) {
+                alert(data);
+            }, {});
+        };
     });
