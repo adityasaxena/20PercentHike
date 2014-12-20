@@ -17,17 +17,14 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
-    <script src="js/wifi.js"></script>
-    <script src="js/accelometer.js"></script>
-    <script src="js/orientation.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/services/facebook-data.js"></script>
+    <script src="js/services/wifi.js"></script>
+    <script src="js/services/accelometer.js"></script>
+    <script src="js/services/orientation.js"></script>
 
+    <script src="js/controllers/app.js"></script>
+    <script src="js/controllers/home.js"></script>
 
-</head>
-
-<body ng-app="starter" ng-controller="main">
-
+<<<<<<< HEAD
     <ion-pane>
         <ion-header-bar class="bar-stable">
             <h1 class="title">Awesome Hackathon</h1>
@@ -42,49 +39,18 @@
                 <div class="item item-divider">
                     Wifi Details
                 </div>
+=======
+    <script src="js/services/facebook-data.js"></script>
+>>>>>>> refactoring
 
-                <a class="item" href="javascript:void(0)">
-                      BSSID : {{BSSID}}
-                </a>
-                <a class="item" href="javascript:void(0)">
-                      SSID : {{SSID}}
-                </a>
-                <a class="item" href="javascript:void(0)">
-                      level : {{level}}
-                </a>
-                <a class="item" href="javascript:void(0)">
-                      Error : {{wifiError}}
-                </a>
 
-                <div class="item item-divider">
-                    Accelometer Details
-                </div>
+</head>
 
-                <a class="item" href="javascript:void(0)">
-                      Acceleration X : {{AccelerationX}}
-                </a>
-                <a class="item" href="javascript:void(0)">
-                      Acceleration Y : {{AccelerationY}}
-                </a>
-                <a class="item" href="javascript:void(0)">
-                      Acceleration Z : {{AccelerationZ}}
-                </a>
-                <a class="item" href="javascript:void(0)">
-                      TimeStamp : {{Accelerationtimestamp}}
-                </a>
-                <a class="item" href="javascript:void(0)">
-                      Error : {{accelerationError}}
-                </a>
-                <div class="item item-divider">
-                    Device Orientation
-                </div>
+<body ng-app="starter" ng-controller="HomeCtrl">
+    <ion-nav-view></ion-nav-view>
 
-                <a class="item" href="javascript:void(0)">
-                      Orientation : {{orientattion}}
-                </a>
-                <a class="item" href="javascript:void(0)">
-                      Orientation Error : {{orientattionError}}
-                </a>
+<<<<<<< HEAD
+
             </div>
             <br>
             <br>
@@ -94,6 +60,8 @@
             </div>
         </ion-content>
     </ion-pane>
+=======
+>>>>>>> refactoring
 </body>
 
 </html>

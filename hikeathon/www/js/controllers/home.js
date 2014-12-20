@@ -1,5 +1,5 @@
 angular.module('starter')
-    .controller('main', function($scope, wifi, accelometer, facebookData, $q) {
+    .controller('HomeCtrl', function($scope, wifi, accelometer, facebookData, $q) {
 
         $scope.tryAcclometer = function() {
             accelometer.tryAcclometer();
@@ -27,7 +27,7 @@ angular.module('starter')
         $scope.loginFacebook = function() {
           var promise = facebookData.login();
           promise.then(function(data) {
-            console.log(data);
+            console.log(JSON.stringify(data));
             $scope.data = data;
           });
         };

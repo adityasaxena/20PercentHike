@@ -17,4 +17,19 @@ angular.module('starter', ['ionic', 'ngCordova'])
       StatusBar.styleDefault();
     }
   });
+})
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+  .state('app', {
+    url: "/app",
+    templateUrl: "templates/app.html",
+    controller: 'AppCtrl'
+  })
+  .state('home', {
+    url: '/home',
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl'
+  });
+
+  $urlRouterProvider.otherwise('/app');
 });
