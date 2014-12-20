@@ -30,7 +30,7 @@ angular.module('starter')
                 });
 
                 // also constantly watch accelometer changes.
-                watchAccelometerChange();
+                // watchAccelometerChange();
             } else {
                 $rootScope.accelerationError = 'Sorry No accelometer found';
             }

@@ -1,5 +1,5 @@
 angular.module('starter')
-    .controller('HomeCtrl', function($scope, wifi, accelometer, facebookData, $q) {
+    .controller('HomeCtrl', function($scope, wifi, accelometer, facebookData, $q, $timeout) {
 
         $scope.tryAcclometer = function() {
             accelometer.tryAcclometer();
@@ -13,14 +13,16 @@ angular.module('starter')
             orientation.showOrientation();
         };
 
-        $scope.refreshAll = function(argument) {
+        $scope.refreshAll = function() {
             $scope.showWifi();
             $scope.tryAcclometer();
             $scope.showOrientation();
+            $timeout(function  () {
+                $scope.refreshAll();
+            }, 1000);
         }
 
         document.addEventListener("deviceready", function onDeviceReady() {
-            alert('device ready');
             $scope.refreshAll();
         }, false);
 
