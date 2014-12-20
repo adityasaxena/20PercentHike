@@ -4,14 +4,14 @@ angular.module('starter')
 
         this.showWifi = function() {
             navigator.wifi.getAccessPoints(function(data) {
-                alert(data);
+                alert(JSON.stringify(data));
             }, function(data) {
-                alert(data);
+                alert(JSON.stringify(data));
             });
             navigator.wifi.watchAccessPoints(function(data) {
-                alert(data);
+                alert(JSON.stringify(data));
             }, function(data) {
-                alert(data);
+                alert(JSON.stringify(data));
             }, {});
             // navigator.wifi.clearWatch(id)
         };
