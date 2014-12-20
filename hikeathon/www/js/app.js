@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'ngCordova'])
 
-.run(function($ionicPlatform, $cordovaFacebook) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -16,13 +16,5 @@ angular.module('starter', ['ionic', 'ngCordova'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-
-    console.log($cordovaFacebook.init(311894645668189));
-
-    $cordovaFacebook.login(['user_about_me' , 'user_activities', 'user_birthday'], function(result) {
-      console.log(JSON.stringify(result));
-    }, function(error) {
-      console.log(JSON.stringify(error));
-    });
   });
 });

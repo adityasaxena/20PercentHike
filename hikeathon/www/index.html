@@ -21,6 +21,7 @@
     <script src="js/accelometer.js"></script>
     <script src="js/orientation.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/services/facebook-data.js"></script>
 
 
 </head>
@@ -31,14 +32,13 @@
         <ion-header-bar class="bar-stable">
             <h1 class="title">Awesome Hackathon</h1>
         </ion-header-bar>
-        <ion-content>
+        <ion-content class="padding">
             <button class="button button-outline button-balanced" ng-click="tryAcclometer()">
                 Try Accelometer
             </button>
             <button class="button button-outline button-balanced" ng-click="showWifi()">
                 Show wifi.
             </button>
-
             <div class="list">
 
                 <div class="item item-divider">
@@ -88,7 +88,11 @@
                       Orientation Error : {{orientattionError}}
                 </a>
             </div>
-
+            <br><br>
+            <button class="button button-positive" ng-click="loginFacebook()">Facebook Login</button>
+            <div class="card">
+              <div class="item item-text-wrap">{{ data }}</div>
+            </div>
         </ion-content>
     </ion-pane>
 </body>

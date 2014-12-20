@@ -1,5 +1,5 @@
 angular.module('starter')
-    .controller('main', function($scope, wifi, accelometer, orientation) {
+    .controller('main', function($scope, wifi, accelometer, facebookData, $q) {
 
         $scope.tryAcclometer = function() {
             accelometer.tryAcclometer();
@@ -19,5 +19,11 @@ angular.module('starter')
             $scope.showOrientation();
         }, false);
 
-
+        $scope.loginFacebook = function() {
+          var promise = facebookData.login();
+          promise.then(function(data) {
+            console.log(data);
+            $scope.data = data;
+          });
+        };
     });
