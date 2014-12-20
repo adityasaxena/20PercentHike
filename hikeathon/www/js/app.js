@@ -6,7 +6,10 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $q) {
+  var dfd = $q.defer();
+  $rootScope.deviceReady = dfd.promise;
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -16,6 +19,8 @@ angular.module('starter', ['ionic', 'ngCordova'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+    dfd.resolve( device );
+
   });
 })
 .config(function($stateProvider, $urlRouterProvider) {
