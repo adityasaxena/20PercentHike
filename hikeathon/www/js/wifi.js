@@ -1,18 +1,30 @@
 // Sapy
 angular.module('starter')
-    .service('wifi', function() {
+    .service('wifi', function($rootScope) {
 
         this.showWifi = function() {
-            navigator.wifi.getAccessPoints(function(data) {
-                alert(JSON.stringify(data));
-            }, function(data) {
-                alert(JSON.stringify(data));
-            });
-            navigator.wifi.watchAccessPoints(function(data) {
-                alert(JSON.stringify(data));
-            }, function(data) {
-                alert(JSON.stringify(data));
-            }, {});
+            if (navigator.wifi) {
+                navigator.wifi.getAccessPoints(function(data) {
+
+                    $rootScope.BSSID = data[0].BSSID;
+                    $rootScope.SSID = data[0].SSID;
+                    $rootScope.level = data[0].level;
+                    // alert(JSON.stringify(data));
+                }, function(data) {
+                    $rootScope.wifiError = 'Wifi Error ' + JSON.stringify(data);
+                });
+
+                navigator.wifi.watchAccessPoints(function(data) {
+                    $rootScope.BSSID = data[0].BSSID;
+                    $rootScope.SSID = data[0].SSID;
+                    $rootScope.level = data[0].level;
+                    // alert(JSON.stringify(data));
+                }, function(data) {
+                    $rootScope.wifiError = 'Wifi Error ' + JSON.stringify(data);
+                }, {});
+            } else {
+                $rootScope.wifiError = 'No Wifi sensor in phone';
+            }
             // navigator.wifi.clearWatch(id)
         };
     });
