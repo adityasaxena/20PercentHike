@@ -11,4 +11,12 @@ function onError() {
     alert('onError!');
 };
 
-navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+setTimeout(function() {
+    var acclemoetre;
+    if (acclemoetre) {
+        acclemoetre.getCurrentAcceleration(onSuccess, onError);
+    } else {
+        alert('Sorry No accelometer found');
+    }
+
+}, 5000);
