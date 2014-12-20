@@ -21,6 +21,10 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"WifiScanner\"><param name=\"android-package\" value=\"nl.nielsad.cordova.wifiscanner.WifiListener\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"FacebookConnectPlugin\"><param name=\"android-package\" value=\"org.apache.cordova.facebook.ConnectPlugin\" /></feature>",
                             "count": 1
                         },
@@ -42,10 +46,6 @@
                         },
                         {
                             "xml": "<access origin=\"https://*.akamaihd.net\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"WifiScanner\"><param name=\"android-package\" value=\"nl.nielsad.cordova.wifiscanner.WifiListener\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -104,12 +104,12 @@
         "org.apache.cordova.device-motion": {
             "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
         },
+        "nl.nielsad.cordova.wifiscanner": {
+            "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
+        },
         "com.phonegap.plugins.facebookconnect": {
             "APP_ID": "311894645668189",
             "APP_NAME": "20PercentHike",
-            "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
-        },
-        "nl.nielsad.cordova.wifiscanner": {
             "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
         }
     },
