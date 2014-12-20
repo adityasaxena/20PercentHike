@@ -17,14 +17,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Accelerometer\"><param name=\"android-package\" value=\"org.apache.cordova.devicemotion.AccelListener\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"WifiScanner\"><param name=\"android-package\" value=\"nl.nielsad.cordova.wifiscanner.WifiListener\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"FacebookConnectPlugin\"><param name=\"android-package\" value=\"org.apache.cordova.facebook.ConnectPlugin\" /></feature>",
                             "count": 1
                         },
@@ -50,6 +42,14 @@
                         },
                         {
                             "xml": "<feature name=\"Compass\"><param name=\"android-package\" value=\"org.apache.cordova.deviceorientation.CompassListener\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"WifiScanner\"><param name=\"android-package\" value=\"nl.nielsad.cordova.wifiscanner.WifiListener\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Accelerometer\"><param name=\"android-package\" value=\"org.apache.cordova.devicemotion.AccelListener\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -83,19 +83,19 @@
                     ],
                     "/*": [
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\" />",
-                            "count": 1
-                        },
-                        {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
                             "count": 1
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\" />",
                             "count": 1
                         }
                     ]
@@ -113,18 +113,18 @@
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
         },
-        "org.apache.cordova.device-motion": {
-            "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
-        },
-        "nl.nielsad.cordova.wifiscanner": {
-            "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
-        },
         "com.phonegap.plugins.facebookconnect": {
             "APP_ID": "311894645668189",
             "APP_NAME": "20PercentHike",
             "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
         },
         "org.apache.cordova.device-orientation": {
+            "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
+        },
+        "nl.nielsad.cordova.wifiscanner": {
+            "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
+        },
+        "org.apache.cordova.device-motion": {
             "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
         }
     },
