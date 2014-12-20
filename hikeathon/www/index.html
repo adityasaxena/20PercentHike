@@ -32,12 +32,10 @@
         <ion-header-bar class="bar-stable">
             <h1 class="title">Awesome Hackathon</h1>
         </ion-header-bar>
-        <ion-content class="padding">
-            <button class="button button-outline button-balanced" ng-click="tryAcclometer()">
-                Try Accelometer
-            </button>
-            <button class="button button-outline button-balanced" ng-click="showWifi()">
-                Show wifi.
+
+        <ion-content>
+            <button class="button button-outline button-balanced" ng-click="refreshAll()">
+                Refresh All
             </button>
             <div class="list">
 
@@ -88,10 +86,11 @@
                       Orientation Error : {{orientattionError}}
                 </a>
             </div>
-            <br><br>
+            <br>
+            <br>
             <button class="button button-positive" ng-click="loginFacebook()">Facebook Login</button>
             <div class="card">
-              <div class="item item-text-wrap">{{ data }}</div>
+                <div class="item item-text-wrap">{{ data }}</div>
             </div>
         </ion-content>
     </ion-pane>

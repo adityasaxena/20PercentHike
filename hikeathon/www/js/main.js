@@ -13,10 +13,15 @@ angular.module('starter')
             orientation.showOrientation();
         };
 
-        document.addEventListener("deviceready", function onDeviceReady() {
+        $scope.refreshAll = function(argument) {
             $scope.showWifi();
             $scope.tryAcclometer();
             $scope.showOrientation();
+        }
+
+        document.addEventListener("deviceready", function onDeviceReady() {
+            alert('device ready');
+            $scope.refreshAll();
         }, false);
 
         $scope.loginFacebook = function() {
