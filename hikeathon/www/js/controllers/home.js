@@ -27,10 +27,11 @@ angular.module('starter')
         }, false);
 
         $scope.loginFacebook = function() {
+          $scope.auth = null;
           var promise = facebookData.login();
           promise.then(function(data) {
             console.log(JSON.stringify(data));
-            $scope.data = data;
+            $scope.auth = data;
           });
         };
     });

@@ -3,14 +3,18 @@ angular.module('starter')
 
     var login = function() {
       var deferred = $q.defer();
-      $cordovaFacebook.init(311894645668189);
-      $cordovaFacebook.login(['user_about_me' , 'user_activities', 'user_birthday'], function(result) {
-        console.log(JSON.stringify(result));
-        deferred.resolve(result);
-      }, function(error) {
-        console.log(JSON.stringify(error));
-        deferred.reject(result);
-      });
+      $cordovaFacebook.login(['user_about_me' , 'user_activities', 'user_birthday'])
+        .then(function(success){
+          console.log(JSON.stringify(success));
+          var authResponse = success.authResponse;
+          var authObject = {
+            userID: authResponse.userID,
+            accessToken: authResponse.accessToken
+          };
+          deferred.resolve(authObject);
+        }, function(error){
+          // error
+        });
       return deferred.promise;
     };
 
