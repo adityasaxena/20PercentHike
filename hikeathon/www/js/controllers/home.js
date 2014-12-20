@@ -24,4 +24,6 @@ angular.module('starter')
             $scope.userDetails = data;
           })
         }
+				//Output of this function
+				// {"id":"10152452984360124","birthday":"12/24/1986","gender":"male","name":"Aditya Saxena"}
     });
