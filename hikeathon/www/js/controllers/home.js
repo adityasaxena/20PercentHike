@@ -3,14 +3,8 @@ angular.module('starter')
 
 				fb.getLoginStatus()
 				.then(function(data) {
-					console.log(JSON.stringify(data));
-					if(data.status === 'unknown' || data.status === 'not_authorized') {
-						$scope.showLoginButton = true;
-					}
-					else {
-						console.log('already logged in');
-					}
-					//do nothing if the login is there else show the login button and user will try to login using that button
+					console.log('already logged in');
+					//now we need to call some facebook api's here to retrieve user data
 				}, function(error) {
 					$scope.showLoginButton = true;
 				});

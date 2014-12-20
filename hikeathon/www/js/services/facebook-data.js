@@ -8,7 +8,12 @@ angular.module('starter')
       var deferred = $q.defer();
       $cordovaFacebook.getLoginStatus()
       .then(function(success) {
-        deferred.resolve(success);
+        if(success.status === 'unknown' || success.status === 'not_authorized') {
+          deferred.reject(success);
+        }
+        else {
+          deferred.resolve(success);
+        }
       }, function (error) {
         deferred.reject(error);
       });
