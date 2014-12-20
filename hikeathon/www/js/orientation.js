@@ -9,5 +9,5 @@ angular.module('starter')
             }, {
                 frequency: 3000
             }); // Update every 3 seconds);
-        }
+        };
     });

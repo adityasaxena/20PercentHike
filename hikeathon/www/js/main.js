@@ -9,14 +9,14 @@ angular.module('starter')
             wifi.showWifi();
         };
 
-        $scope.deviceOrientation = function() {
+        $scope.showOrientation = function() {
             orientation.showOrientation();
         };
 
         document.addEventListener("deviceready", function onDeviceReady() {
             $scope.showWifi();
             $scope.tryAcclometer();
-            $scope.deviceOrientation();
+            $scope.showOrientation();
         }, false);
 
 
