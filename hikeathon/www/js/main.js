@@ -1,5 +1,5 @@
 angular.module('starter')
-    .controller('main', function($scope, $rootScope, $timeout) {
+    .controller('main', function($scope, $rootScope, $timeout, wifi) {
 
         var onAcceslometerSuccess = function(acceleration) {
             alert('Acceleration X: ' + acceleration.x + '\n' +
@@ -22,15 +22,6 @@ angular.module('starter')
         };
 
         $scope.showWifi = function(argument) {
-            navigator.wifi.getAccessPoints(function(data) {
-                alert(data);
-            }, function(data) {
-                alert(data);
-            });
-            navigator.wifi.watchAccessPoints(function(data) {
-                alert(data);
-            }, function(data) {
-                alert(data);
-            }, {});
+            wifi.showWifi();
         };
     });
