@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>20 % Hike</title>
+    <title>20%Hike</title>
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
 
@@ -19,6 +19,7 @@
     <script src="js/app.js"></script>
     <script src="js/wifi.js"></script>
     <script src="js/accelometer.js"></script>
+    <script src="js/orientation.js"></script>
     <script src="js/main.js"></script>
 
 
@@ -28,7 +29,7 @@
 
     <ion-pane>
         <ion-header-bar class="bar-stable">
-            <h1 class="title">Hike Hackathon</h1>
+            <h1 class="title">Awesome Hackathon</h1>
         </ion-header-bar>
         <ion-content>
             <button class="button button-outline button-balanced" ng-click="tryAcclometer()">
@@ -75,6 +76,16 @@
                 </a>
                 <a class="item" href="javascript:void(0)">
                       Error : {{accelerationError}}
+                </a>
+                <div class="item item-divider">
+                    Device Orientation
+                </div>
+
+                <a class="item" href="javascript:void(0)">
+                      Orientation : {{orientattion}}
+                </a>
+                <a class="item" href="javascript:void(0)">
+                      Orientation Error : {{orientattionError}}
                 </a>
             </div>
 

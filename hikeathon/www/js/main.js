@@ -1,17 +1,23 @@
 angular.module('starter')
-    .controller('main', function($scope, wifi, accelometer, $timeout) {
+    .controller('main', function($scope, wifi, accelometer, orientation) {
 
         $scope.tryAcclometer = function() {
             accelometer.tryAcclometer();
         };
 
-        $scope.showWifi = function(argument) {
+        $scope.showWifi = function() {
             wifi.showWifi();
         };
 
-        $timeout(function(argument) {
+        $scope.deviceOrientation = function() {
+            orientation.showOrientation();
+        };
+
+        document.addEventListener("deviceready", function onDeviceReady() {
             $scope.showWifi();
             $scope.tryAcclometer();
-        }, 3000);
+            $scope.deviceOrientation();
+        }, false);
+
 
     });
