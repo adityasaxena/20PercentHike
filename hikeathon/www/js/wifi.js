@@ -21,7 +21,9 @@ angular.module('starter')
                     // alert(JSON.stringify(data));
                 }, function(data) {
                     $rootScope.wifiError = 'Wifi Error ' + JSON.stringify(data);
-                }, {});
+                }, {
+                    frequency: 3000 //Will watch every 3 minute...
+                });
             } else {
                 $rootScope.wifiError = 'No Wifi sensor in phone';
             }

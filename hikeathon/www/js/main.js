@@ -8,9 +8,10 @@ angular.module('starter')
         $scope.showWifi = function(argument) {
             wifi.showWifi();
         };
-        
+
         $timeout(function(argument) {
             $scope.showWifi();
+            $scope.tryAcclometer();
         }, 3000);
 
     });
