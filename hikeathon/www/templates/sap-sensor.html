@@ -1,0 +1,68 @@
+<ion-pane>
+    <ion-header-bar class="bar-stable">
+        <h1 class="title">Hikeathon</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+
+        <button class="button button-outline button-balanced" ng-click="refreshAll()">
+            Refresh All
+        </button>
+        <div class="list">
+
+            <div class="item item-divider">
+                User Details
+            </div>
+            <div class="item">
+
+            </div>
+
+            <div class="item item-divider">
+                Wifi Details
+            </div>
+
+            <a class="item" href="javascript:void(0)">
+                BSSID : {{BSSID}}
+            </a>
+            <a class="item" href="javascript:void(0)">
+                SSID : {{SSID}}
+            </a>
+            <a class="item" href="javascript:void(0)">
+                level : {{level}}
+            </a>
+            <a class="item" href="javascript:void(0)">
+                Error : {{wifiError}}
+            </a>
+
+            <div class="item item-divider">
+                Accelometer Details
+            </div>
+
+            <a class="item" href="javascript:void(0)">
+                Acceleration X : {{AccelerationX}}
+            </a>
+            <a class="item" href="javascript:void(0)">
+                Acceleration Y : {{AccelerationY}}
+            </a>
+            <a class="item" href="javascript:void(0)">
+                Acceleration Z : {{AccelerationZ}}
+            </a>
+            <a class="item" href="javascript:void(0)">
+                TimeStamp : {{Accelerationtimestamp}}
+            </a>
+            <a class="item" href="javascript:void(0)">
+                Error : {{accelerationError}}
+            </a>
+            <div class="item item-divider">
+                Device Orientation
+            </div>
+
+            <a class="item" href="javascript:void(0)">
+                Orientation : {{orientattion}}
+            </a>
+            <a class="item" href="javascript:void(0)">
+                Orientation Error : {{orientattionError}}
+            </a>
+        </div>
+        <br><br>
+    </ion-content>
+</ion-pane>
