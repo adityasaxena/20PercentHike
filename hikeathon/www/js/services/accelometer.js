@@ -51,7 +51,6 @@ angular.module('starter')
         var processAccelometer = function(x, y, z) {
 
             if (new Date() - lastAccSavedAt > pollTime) {
-                debugger
                 lastAccSavedAt = new Date();
                 var prevMax = Math.max($localStorage.maxacc.x, $localStorage.maxacc.y, $localStorage.maxacc.z);
                 var maxOfMax = Math.max(x, y, z);
@@ -60,7 +59,7 @@ angular.module('starter')
                     $localStorage.maxacc.x = x;
                     $localStorage.maxacc.y = y;
                     $localStorage.maxacc.z = z;
-                    $localStorage.maxacc.maxOn = new Date();
+                    $localStorage.maxacc.maxOn = new Date().toString().substr(4, 20);
                 }
                 $localStorage.userAction = $rootScope.userAction;
                 $rootScope.maxacc = $localStorage.maxacc;
@@ -75,7 +74,7 @@ angular.module('starter')
                         x: 0,
                         y: 0,
                         z: 0,
-                        maxOn: new Date()
+                        maxOn: new Date().toString().substr(4, 20)
                     };
                 }
             }
@@ -84,10 +83,10 @@ angular.module('starter')
             // Testing code change x,y,z to see changes
 
             // updateRootScope({
-            //     x: 1,
+            //     x: 19,
             //     y: 17,
             //     z: 4,
-            //     timestamp: new Date()
+            //     timestamp: new Date().toString().substr(4, 20)
             // });
 
             // Test code ends

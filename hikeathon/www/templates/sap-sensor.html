@@ -27,7 +27,7 @@
             </div>
             <div class="item item-text-wrap balanced" ng-show="$root.maxacc">
                 <div class="royal">
-                    Your maximum accelaration is <pre>{{$root.maxacc}} (*unit in meter/sec^2)</pre>
+                    Your maximum accelaration is <pre>{{maxacc}}( meter/sec^2)</pre>
                 </div>
             </div>
             <div class="item item-text-wrap item-divider">
@@ -38,7 +38,7 @@
                 <div>Wifi Id: {{topWifi.bssid}}</div>
                 <div>Total Usage: {{topWifi.usedForSeconds / (1000 * 60 * 60 *24)|number:4}} Days</div>
                 <div>Last Session Duration: {{topWifi.currentSession / (1000 * 60 * 60)|number:3}} Hours</div>
-                <div ng-if="bssid === topWifi.bssid">Signal Strength: {{signalLevel}} (**This wifi is in use)</div>
+                <div ng-if="bssid === topWifi.bssid">Signal Strength: {{signalLevel}} (**this wifi is in use)</div>
             </div>
             <div class="item item-text-wrap highLightCard" ng-if="!topWifis">
                 No wifi yet. Please connect to different wifi(home/office) and allow the system some time to learn and apply intelligence on gathered data.
@@ -47,20 +47,12 @@
             <div class="item item-text-wrap item-divider">
                 Accelometer Details
             </div>
-
             <a class="item item-text-wrap" href="javascript:void(0)">
-                Acceleration X : {{AccelerationX}}
-            </a>
-            <a class="item item-text-wrap" href="javascript:void(0)">
-                Acceleration Y : {{AccelerationY}}
-            </a>
-            <a class="item item-text-wrap" href="javascript:void(0)">
-                Acceleration Z : {{AccelerationZ}}
+                <span class="royal">Acceleration X</span> : {{AccelerationX}}, <span class="royal">Acceleration Y</span> : {{AccelerationY}}, <span class="royal">Acceleration Z</span> : {{AccelerationZ}}
             </a>
             <div class="item item-text-wrap item-divider">
                 Device Orientation
             </div>
-
             <a class="item item-text-wrap" href="javascript:void(0)">
                 Magnetic Orientation : {{orientattion}}
             </a>
