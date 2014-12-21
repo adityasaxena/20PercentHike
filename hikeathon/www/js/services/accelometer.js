@@ -5,7 +5,7 @@ angular.module('starter')
             frequency: 3000
         }; // Update every 3 seconds
 
-        var updateRootScope = function(argument) {
+        var updateRootScope = function(acceleration) {
             $rootScope.AccelerationX = acceleration.x;
             $rootScope.AccelerationY = acceleration.y;
             $rootScope.AccelerationZ = acceleration.z;
@@ -21,9 +21,9 @@ angular.module('starter')
         }
 
         this.tryAcclometer = function() {
-            var acclemoetre;
-            if (acclemoetre) {
-                acclemoetre.getCurrentAcceleration(function(acceleration) {
+            var acc = navigator.accelerometer;
+            if (acc) {
+                acc.getCurrentAcceleration(function(acceleration) {
                     updateRootScope(acceleration);
                 }, function(error) {
                     $rootScope.accelerationError = JSON.stringify(error);
