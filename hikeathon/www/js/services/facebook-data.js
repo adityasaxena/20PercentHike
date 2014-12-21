@@ -22,7 +22,7 @@ angular.module('starter')
 
     var login = function() {
       var deferred = $q.defer();
-      $cordovaFacebook.login(['user_about_me' , 'user_activities', 'user_birthday'])
+      $cordovaFacebook.login(['user_about_me' , 'user_activities', 'user_birthday', 'user_photos'])
         .then(function(success){
           console.log(JSON.stringify(success));
           var authResponse = success.authResponse;
@@ -52,6 +52,7 @@ angular.module('starter')
 
     var getProfile = function() {
       var deferred = $q.defer();
+      console.log('initiating api for profile');
       $cordovaFacebook.api('me?fields=id,name, gender, birthday')
         .then(function(success){
           console.log(JSON.stringify(success));
@@ -67,12 +68,28 @@ angular.module('starter')
       return deferred.promise;
     };
 
+    var getBestFriend = function() {
+      console.log('initiating api for photos');
+      var deferred = $q.defer();
+      console.log("10154771054055500" + '/photos');
+      $cordovaFacebook.api('10154771054055500' + '/photos')
+        .then(function(success) {
+          console.log('fetched photos it seems');
+          console.log(JSON.stringify(success));
+          deferred.resolve('Mary');
+        }, function(error) {
+          // error
+        });
+      return deferred.promise;
+    };
+
     return {
       userID: userID,
       accessToken: accessToken,
       login: login,
       getLoginStatus: getLoginStatus,
       getProfile: getProfile,
+      getBestFriend: getBestFriend,
       logout: logout
     };
   });

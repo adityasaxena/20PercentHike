@@ -7,6 +7,7 @@ angular.module('starter')
 		.then(function (data) {
 			console.log('already logged in');
 			getProfile();
+      getBestFriend();
 		}, function (error) {
 			$scope.showLoginButton = true;
 		});
@@ -18,16 +19,25 @@ angular.module('starter')
 			console.log(JSON.stringify(data));
 			$scope.userDetails = data;
 			getProfile();
+      getBestFriend();
 		});
 	};
 
 	function getProfile() {
 		var profilePromise = fb.getProfile();
 		profilePromise.then(function (data) {
+      console.log(data); //
 			$scope.userDetails = data;
       $scope.showLoginButton = false;
 		});
 	}
+
+  function getBestFriend() {
+    var promise = fb.getBestFriend();
+    promise.then(function (data) {
+      $scope.bestFriend = data;
+    });
+  }
 
   $scope.logout = function() {
     var promise = fb.logout();

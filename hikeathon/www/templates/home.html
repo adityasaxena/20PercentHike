@@ -7,7 +7,16 @@
         <button class="button button-positive" ng-click="loginFacebook()" ng-show="showLoginButton">Facebook Login</button>
         <button class="button button-assertive" ng-click="logout()" ng-show="!showLoginButton">Logout</button>
         <div class="card">
-            <div class="item item-text-wrap">{{ userDetails }}</div>
+            <div class="item item-text-wrap">
+              <div>User Details</div>
+              <div>{{ userDetails }}</div>
+            </div>
+        </div>
+        <div class="card">
+          <div class="item item-text-wrap">
+            <div>Best Friend</div>
+            <div>{{ bestFriend }}</div>
+          </div>
         </div>
     </ion-content>
 </ion-pane>
