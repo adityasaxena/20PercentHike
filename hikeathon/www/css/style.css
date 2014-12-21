@@ -1,5 +1,8 @@
 /* Empty. Add your own CSS if you like */
 
-.nbText{
-	font-size: 12px;
+.nbText {
+    font-size: 12px;
+}
+.highLightCard {
+    background: #11c1f3 !important;
 }

@@ -50,7 +50,7 @@ angular.module('starter')
         var updateRootScope = function(data) {
             $rootScope.bssid = data.BSSID;
             $rootScope.ssid = data.SSID;
-            $rootScope.level = data.level;
+            $rootScope.signalLevel = data.level;
         };
 
         this.showWifi = function() {
@@ -59,15 +59,17 @@ angular.module('starter')
             }
 
             // Testing code change wifi ids to see changes
-            // var test1 = 'Id-test 3';
-            // var test2 = 'yoyo';
+            // var test1 = 'id11';
+            // var test2 = 'name1';
             // updateLocalStorage({
             //     BSSID: test1,
-            //     SSID: test2
+            //     SSID: test2,
+            //     level: 33
             // });
             // updateRootScope({
             //     BSSID: test1,
-            //     SSID: test2
+            //     SSID: test2,
+            //     level: 33
             // });
             // Test code ends
 

@@ -24,29 +24,17 @@
             <div class="item item-divider">
                 Most Used Wifi All time
             </div>
-            <a ng-repeat="topWifi in topWifis" class="item" href="javascript:void(0)">
-                <div><b>Wifi {{$index+1}}</b> : {{topWifi.ssid}}</div>
-                <div><b>Total Usage</b> : {{topWifi.usedForSeconds / (1000 * 60 * 60 *24)|number:4}} Days</div>
-                <div><b>Last Session Duration</b> : {{topWifi.currentSession / (1000 * 60 * 60)|number:3}} Hours</div>
-            </a>
-
-            <div class="item item-divider">
-                Wifi Details
+            <div ng-repeat="topWifi in topWifis" class="item" ng-class="{'highLightCard' : bssid === topWifi.bssid}">
+                <div>Wifi {{$index+1}}: {{topWifi.ssid}}</div>
+                <div>Wifi Id: {{topWifi.bssid}}</div>
+                <div>Total Usage: {{topWifi.usedForSeconds / (1000 * 60 * 60 *24)|number:4}} Days</div>
+                <div>Last Session Duration: {{topWifi.currentSession / (1000 * 60 * 60)|number:3}} Hours</div>
+                <div ng-if="bssid === topWifi.bssid">Signal Strength: {{signalLevel}} (**This wifi is in use)</div>
             </div>
-
-
-            <a class="item" href="javascript:void(0)">
-                BSSID : {{bssid}}
-            </a>
-            <a class="item" href="javascript:void(0)">
-                SSID : {{ssid}}
-            </a>
-            <a class="item" href="javascript:void(0)">
-                level : {{level}}
-            </a>
-            <a class="item" href="javascript:void(0)">
+            
+            <div ng-show="wifiError" class="item" href="javascript:void(0)">
                 Error : {{wifiError}}
-            </a>
+            </div>
 
             <div class="item item-divider">
                 Accelometer Details
