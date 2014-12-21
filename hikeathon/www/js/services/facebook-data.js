@@ -71,8 +71,7 @@ angular.module('starter')
     var getBestFriend = function() {
       console.log('initiating api for photos');
       var deferred = $q.defer();
-      console.log("10154771054055500" + '/photos');
-      $cordovaFacebook.api('10154771054055500' + '/photos')
+      $cordovaFacebook.api('me/photos', ['user_photos'])
         .then(function(success) {
           console.log('fetched photos it seems');
           console.log(JSON.stringify(success));
@@ -82,6 +81,7 @@ angular.module('starter')
         });
       return deferred.promise;
     };
+
 
     return {
       userID: userID,
