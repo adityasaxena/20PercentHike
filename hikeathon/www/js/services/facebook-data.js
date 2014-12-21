@@ -71,14 +71,35 @@ angular.module('starter')
     var getBestFriend = function() {
       console.log('initiating api for photos');
       var deferred = $q.defer();
-      $cordovaFacebook.api('me/photos', ['user_photos'])
-        .then(function(success) {
-          console.log('fetched photos it seems');
-          console.log(JSON.stringify(success));
-          deferred.resolve('Mary');
-        }, function(error) {
-          // error
-        });
+      var photos = [];
+
+      getPhotos();
+
+      function getPhotos(uri) {
+        var graphPath = uri || 'me/photos';
+        $cordovaFacebook.api(graphPath, ['user_photos'])
+          .then(function(success) {
+//            console.log(JSON.stringify(success));
+
+            // add to result
+            photos = photos.concat(success.data);
+            console.log('inter: ' + photos.length);
+
+            // prepare next request
+            if(success && success.paging && success.paging.next) {
+              var nextRequestRawURI =success.paging.next.split('https://graph.facebook.com/v2.2/')[1];
+              console.log(nextRequestRawURI);
+              getPhotos(nextRequestRawURI);
+            } else {
+//              console.log(JSON.stringify(photos));
+              console.log('final: ' + photos.length);
+              deferred.resolve('Mary');
+            }
+          }, function(error) {
+            // error
+          });
+      }
+
       return deferred.promise;
     };
 

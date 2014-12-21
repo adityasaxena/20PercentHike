@@ -1,5 +1,5 @@
 angular.module('starter')
-.controller('HomeCtrl', function ($scope, $ionicPlatform, fb) {
+.controller('HomeCtrl', function ($scope, $ionicPlatform, $timeout, fb) {
 	console.log('home controller init');
 
 	$ionicPlatform.ready(function () {
@@ -9,6 +9,7 @@ angular.module('starter')
 			//getProfile();
 			getBestFriend();
 			//getUserInterests();
+      $timeout(getBestFriend, 5000);
 		}, function (error) {
 			$scope.showLoginButton = true;
 		});
@@ -19,8 +20,8 @@ angular.module('starter')
 		promise.then(function (data) {
 			console.log(JSON.stringify(data));
 			$scope.userDetails = data;
-			//getProfile();
-			//getBestFriend();
+			getProfile();
+      $timeout(getBestFriend, 5000);
 		});
 	};
 
