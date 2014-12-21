@@ -3,7 +3,9 @@ angular.module('starter')
     .service('wifi', function($rootScope, $localStorage) {
 
         var lastWifidetectedAt;
-        var pollingTime = 10000;
+        var pollingTime = 5000;
+
+
 
         var updateLocalStorage = function(data) {
             // Wifi is used for atleast 10 seconds
@@ -18,6 +20,7 @@ angular.module('starter')
                     if (existingWifi) {
                         existingWifi.usedForSeconds = existingWifi.usedForSeconds + (new Date() - lastWifidetectedAt);
                         existingWifi.lastTime = new Date();
+                        existingWifi.currentSession = new Date() - $rootScope.sessionStarted;
                     } else {
                         $localStorage.wifi.push({
                             bssid: data.BSSID,
@@ -38,23 +41,36 @@ angular.module('starter')
                 }
 
                 lastWifidetectedAt = new Date();
+                // 3 most favorite wifi
+                $rootScope.topWifis = _.sortBy($localStorage.wifi, 'usedForSeconds').reverse();
             }
 
-        }
+        };
 
         var updateRootScope = function(data) {
             $rootScope.bssid = data.BSSID;
             $rootScope.ssid = data.SSID;
             $rootScope.level = data.level;
-        }
+        };
 
         this.showWifi = function() {
-            updateLocalStorage({
-                'BSSID': 'test:id'
-            });
             if (!lastWifidetectedAt) {
                 lastWifidetectedAt = new Date();
             }
+
+            // Testing code change wifi ids to see changes
+            // var test1 = 'Id-test 3';
+            // var test2 = 'yoyo';
+            // updateLocalStorage({
+            //     BSSID: test1,
+            //     SSID: test2
+            // });
+            // updateRootScope({
+            //     BSSID: test1,
+            //     SSID: test2
+            // });
+            // Test code ends
+
             if (navigator.wifi) {
                 navigator.wifi.getAccessPoints(function(data) {
                     updateLocalStorage(data[0]);
@@ -66,4 +82,6 @@ angular.module('starter')
                 $rootScope.wifiError = 'No Wifi sensor in phone';
             }
         };
+
+
     });

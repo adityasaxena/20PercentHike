@@ -12,19 +12,34 @@
             <div class="item item-divider">
                 User Details
             </div>
-            <div class="item">
-
+            <div class="item balanced" ng-show="$root.bssid && topWifis[0].bssid === $root.bssid">
+                You are using your highest ever used wifi right now So you are at Home<span ng-if="topWifis.length === 1">(Or office)</span> right now.
+                <div class="nbText calm">N.B.-(total usage intelligence is learnt over time , try using the app for several days over different location and wifi and see changes in the outcome.)</div>
             </div>
+            <div class="item balanced" ng-show="$root.bssid && topWifis[1].bssid === $root.bssid">
+                You are using your second most used wifi right now So you are at Office right now.
+                <div class="nbText calm">N.B.-(total usage intelligence is learnt over time , try using the app for several days over different location and wifi and see changes in the outcome.)</div>
+            </div>
+
+            <div class="item item-divider">
+                Most Used Wifi All time
+            </div>
+            <a ng-repeat="topWifi in topWifis" class="item" href="javascript:void(0)">
+                <div><b>Wifi {{$index+1}}</b> : {{topWifi.ssid}}</div>
+                <div><b>Total Usage</b> : {{topWifi.usedForSeconds / (1000 * 60 * 60 *24)|number:4}} Days</div>
+                <div><b>Last Session Duration</b> : {{topWifi.currentSession / (1000 * 60 * 60)|number:3}} Hours</div>
+            </a>
 
             <div class="item item-divider">
                 Wifi Details
             </div>
 
+
             <a class="item" href="javascript:void(0)">
-                BSSID : {{BSSID}}
+                BSSID : {{bssid}}
             </a>
             <a class="item" href="javascript:void(0)">
-                SSID : {{SSID}}
+                SSID : {{ssid}}
             </a>
             <a class="item" href="javascript:void(0)">
                 level : {{level}}
@@ -63,6 +78,7 @@
                 Orientation Error : {{orientattionError}}
             </a>
         </div>
-        <br><br>
+        <br>
+        <br>
     </ion-content>
 </ion-pane>

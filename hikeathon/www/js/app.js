@@ -9,6 +9,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
 .run(function($ionicPlatform, $rootScope, $q) {
         var dfd = $q.defer();
         $rootScope.deviceReady = dfd.promise;
+        $rootScope.sessionStarted = new Date();
 
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
