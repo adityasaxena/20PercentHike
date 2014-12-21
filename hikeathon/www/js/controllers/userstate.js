@@ -5,7 +5,7 @@ angular.module('starter')
 			//nothing here
 		},
 		function (error) {
-			//nothign here
+			//nothing here
 		},
 		function (accl) {
 			var X = accl.x;
@@ -14,4 +14,9 @@ angular.module('starter')
 			$scope.userstate = "X: " + X + "    Y:" + Y + "       Z:" + Z;
 			var timeStamp = accl.timestamp;
 		});
+
+	//Update user state after checking data for last 5 seconds - meaning last 10 data output from the array in service
+	function updateUserState(){
+
+	}
 });

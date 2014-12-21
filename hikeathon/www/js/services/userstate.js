@@ -3,9 +3,10 @@ angular.module('starter')
 	var states = [];
 
 	var options = {
-		maximumAge: 1000,
-		timeout: 60 * 1000,
-		enableHighAccuracy: false // may cause errors if true
+		maximumAge: 3000,
+		timeout: 800,
+		frequency: 500,
+		enableHighAccuracy: true // may cause errors if true
 	};
 
 	var watch = function() {
