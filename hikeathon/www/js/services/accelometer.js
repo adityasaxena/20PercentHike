@@ -33,9 +33,9 @@ angular.module('starter')
                 $rootScope.userAction['Last Drove At'] = currentTime;
             } else if (maxOfCurrent > 16 && maxOfCurrent <= 28) {
                 $rootScope.userAction['Last Ran At'] = currentTime;
-            } else if (maxOfCurrent > 10 && maxOfCurrent <= 16) {
+            } else if (maxOfCurrent > 9.99 && maxOfCurrent <= 16) {
                 $rootScope.userAction['Last walked At'] = currentTime;
-            } else if (maxOfCurrent > 9 && maxOfCurrent <= 10) {
+            } else if (maxOfCurrent > 8 && maxOfCurrent <= 9.99) {
                 $rootScope.userAction['Last stationary At'] = currentTime;
             }
 
