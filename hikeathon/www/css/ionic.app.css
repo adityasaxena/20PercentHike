@@ -7014,3 +7014,9 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.nbText {
+  font-size: 12px; }
+
+.highLightCard {
+  background: aqua !important; }
