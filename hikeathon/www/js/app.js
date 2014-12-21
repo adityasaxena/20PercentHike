@@ -39,6 +39,11 @@ angular.module('starter', ['ionic', 'ngCordova'])
     url: '/sensor',
     templateUrl: 'templates/sap-sensor.html',
     controller: 'SensorCtrl'
+  })
+  .state('userstate', {
+    url: '/userstate',
+    templateUrl: 'templates/userstate.html',
+    controller: 'UserStateCtrl'
   });
 
   $urlRouterProvider.otherwise('/app');
