@@ -11,64 +11,67 @@
         </div>
         <div class="list">
 
-            <div class="item item-divider">
+            <div class="item item-text-wrap item-divider">
                 User Details
             </div>
-            <div class="item balanced" ng-show="$root.bssid && topWifis[0].bssid === $root.bssid">
+            <div class="item item-text-wrap balanced" ng-show="$root.bssid && topWifis[0].bssid === $root.bssid">
                 You are using your highest ever used wifi right now So you are at Home<span ng-if="topWifis.length === 1">(Or office)</span> right now.
                 <div class="nbText calm">N.B.-(total usage intelligence is learnt over time , try using the app for several days over different location and wifi and see changes in the outcome.)</div>
             </div>
-            <div class="item balanced" ng-show="$root.bssid && topWifis[1].bssid === $root.bssid">
+            <div class="item item-text-wrap balanced" ng-show="$root.bssid && topWifis[1].bssid === $root.bssid">
                 You are using your second most used wifi right now So you are at Office right now.
                 <div class="nbText calm">N.B.-(total usage intelligence is learnt over time , try using the app for several days over different location and wifi and see changes in the outcome.)</div>
             </div>
+            <div ng-repeat="(key, value) in userAction" class="item item-text-wrap calm">
+                {{key}} - {{value}}
+            </div>
+            <div class="item item-text-wrap balanced" ng-show="$root.maxacc">
+                <div class="royal">
+                    Your maximum accelaration is <pre>{{$root.maxacc}} (*unit in meter/sec^2)</pre>
+                </div>
+            </div>
+            <div class="item item-text-wrap energized">
+                <div>
+                    {{userMotion}}
+                </div>
+                <button class="button button-outline button-positive" ng-click="$rootScope.userMotion=undefined">
+                    Clear Motion info
+                </button>
+            </div>
 
-            <div class="item item-divider">
+            <div class="item item-text-wrap item-divider">
                 Most Used Wifi All time
             </div>
-            <div ng-repeat="topWifi in topWifis" class="item" ng-class="{'highLightCard' : bssid === topWifi.bssid}">
+            <div ng-repeat="topWifi in topWifis" class="item item-text-wrap" ng-class="{'highLightCard' : bssid === topWifi.bssid}">
                 <div>Wifi {{$index+1}}: {{topWifi.ssid}}</div>
                 <div>Wifi Id: {{topWifi.bssid}}</div>
                 <div>Total Usage: {{topWifi.usedForSeconds / (1000 * 60 * 60 *24)|number:4}} Days</div>
                 <div>Last Session Duration: {{topWifi.currentSession / (1000 * 60 * 60)|number:3}} Hours</div>
                 <div ng-if="bssid === topWifi.bssid">Signal Strength: {{signalLevel}} (**This wifi is in use)</div>
             </div>
-            <div class="item highLightCard" ng-if="!topWifis">
+            <div class="item item-text-wrap highLightCard" ng-if="!topWifis">
                 No wifi yet. Please connect to different wifi(home/office) and allow the system some time to learn and apply intelligence on gathered data.
             </div>
 
-            <div ng-show="wifiError" class="item" href="javascript:void(0)">
-                Error : {{wifiError}}
-            </div>
-
-            <div class="item item-divider">
+            <div class="item item-text-wrap item-divider">
                 Accelometer Details
             </div>
 
-            <a class="item" href="javascript:void(0)">
+            <a class="item item-text-wrap" href="javascript:void(0)">
                 Acceleration X : {{AccelerationX}}
             </a>
-            <a class="item" href="javascript:void(0)">
+            <a class="item item-text-wrap" href="javascript:void(0)">
                 Acceleration Y : {{AccelerationY}}
             </a>
-            <a class="item" href="javascript:void(0)">
+            <a class="item item-text-wrap" href="javascript:void(0)">
                 Acceleration Z : {{AccelerationZ}}
             </a>
-            <a class="item" href="javascript:void(0)">
-                TimeStamp : {{Accelerationtimestamp}}
-            </a>
-            <a class="item" href="javascript:void(0)">
-                Error : {{accelerationError}}
-            </a>
-            <div class="item item-divider">
+            <div class="item item-text-wrap item-divider">
                 Device Orientation
             </div>
 
-            <a class="item" href="javascript:void(0)">
-                Orientation : {{orientattion}}
-            </a>
-            <a class="item" href="javascript:void(0)">
-                Orientation Error : {{orientattionError}}
+            <a class="item item-text-wrap" href="javascript:void(0)">
+                Magnetic Orientation : {{orientattion}}
             </a>
         </div>
         <br>
