@@ -7,44 +7,46 @@
 angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
 
 .run(function($ionicPlatform, $rootScope, $q) {
-  var dfd = $q.defer();
-  $rootScope.deviceReady = dfd.promise;
+        var dfd = $q.defer();
+        $rootScope.deviceReady = dfd.promise;
 
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-    dfd.resolve( device );
+        $ionicPlatform.ready(function() {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            if (window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            }
+            if (window.StatusBar) {
+                StatusBar.styleDefault();
+            }
+            try {
+                dfd.resolve(device);
+            } catch (err) {}
 
-  });
-})
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-  .state('app', {
-    url: "/app",
-    templateUrl: "templates/app.html",
-    controller: 'AppCtrl'
-  })
-  .state('home', {
-    url: '/home',
-    templateUrl: 'templates/home.html',
-    controller: 'HomeCtrl'
-  })
-  .state('sensor', {
-    url: '/sensor',
-    templateUrl: 'templates/sap-sensor.html',
-    controller: 'SensorCtrl'
-  })
-  .state('userstate', {
-    url: '/userstate',
-    templateUrl: 'templates/userstate.html',
-    controller: 'UserStateCtrl'
-  });
+        });
+    })
+    .config(function($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('app', {
+                url: "/app",
+                templateUrl: "templates/app.html",
+                controller: 'AppCtrl'
+            })
+            .state('home', {
+                url: '/home',
+                templateUrl: 'templates/home.html',
+                controller: 'HomeCtrl'
+            })
+            .state('sensor', {
+                url: '/sensor',
+                templateUrl: 'templates/sap-sensor.html',
+                controller: 'SensorCtrl'
+            })
+            .state('userstate', {
+                url: '/userstate',
+                templateUrl: 'templates/userstate.html',
+                controller: 'UserStateCtrl'
+            });
 
-  $urlRouterProvider.otherwise('/app');
-});
+        $urlRouterProvider.otherwise('/app');
+    });

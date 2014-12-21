@@ -2,27 +2,55 @@
 angular.module('starter')
     .service('wifi', function($rootScope, $localStorage) {
 
+        $rootScope.wifiWatch = {};
+
+        var updateLocalStorage = function(data) {
+            // bssid chnage detected
+            if ($rootScope.bssid !== data.BSSID) {
+                // Check If this bssid is previously used bssid
+                if ($localStorage.wifi !== undefined) {
+                    var existingbssids = _.pluck($localStorage.wifi, 'bssid');
+
+                    // If this BSSID is previously used
+                    if (existingbssids.indexOf(data.BSSID) > -1) {
+
+                    } else {
+                        $localStorage.wifi.push({
+                            bssid: data.BSSID,
+                            ssid: data.SSID,
+                            timeline: new Date()
+                        });
+                    }
+                } else {
+                    // For the very first time when APP is initialized
+                    $localStorage.wifi = [];
+                    $localStorage.wifi.push({
+                        bssid: data.BSSID,
+                        ssid: data.SSID,
+                        timeline: newDate()
+                    });
+                }
+            }
+
+        }
+
         var updateRootScope = function(data) {
-            $rootScope.BSSID = data[0].BSSID;
-            $rootScope.SSID = data[0].SSID;
-            $rootScope.level = data[0].level;
+            $rootScope.bssid = data.BSSID;
+            $rootScope.ssid = data.SSID;
+            $rootScope.level = data.level;
         }
 
         this.showWifi = function() {
+            updateLocalStorage({
+                'BSSID': 'test:id'
+            });
             if (navigator.wifi) {
                 navigator.wifi.getAccessPoints(function(data) {
-                    updateRootScope(data);
+                    updateLocalStorage(data[0]);
+                    updateRootScope(data[0]);
                 }, function(data) {
                     $rootScope.wifiError = 'Wifi Error ' + JSON.stringify(data);
                 });
-
-                // navigator.wifi.watchAccessPoints(function(data) {
-                //     updateRootScope(data);
-                // }, function(data) {
-                //     $rootScope.wifiError = 'Wifi Error ' + JSON.stringify(data);
-                // }, {
-                //     frequency: 3000 //Will watch every 3 minute...
-                // });
             } else {
                 $rootScope.wifiError = 'No Wifi sensor in phone';
             }
