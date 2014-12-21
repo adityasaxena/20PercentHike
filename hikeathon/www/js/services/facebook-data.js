@@ -38,6 +38,18 @@ angular.module('starter')
       return deferred.promise;
     };
 
+    var logout = function() {
+      var deferred = $q.defer();
+      $cordovaFacebook.logout()
+        .then(function(success) {
+          console.log(JSON.stringify(success));
+          deferred.resolve();
+        }, function(error) {
+          // error
+        });
+      return deferred.promise;
+    };
+
     var getProfile = function() {
       var deferred = $q.defer();
       $cordovaFacebook.api('me?fields=id,name, gender, birthday')
@@ -60,6 +72,7 @@ angular.module('starter')
       accessToken: accessToken,
       login: login,
       getLoginStatus: getLoginStatus,
-      getProfile: getProfile
+      getProfile: getProfile,
+      logout: logout
     };
   });

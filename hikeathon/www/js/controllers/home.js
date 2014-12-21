@@ -1,5 +1,5 @@
 angular.module('starter')
-.controller('HomeCtrl', function ($scope, fb, $ionicPlatform) {
+.controller('HomeCtrl', function ($scope, $ionicPlatform, fb) {
 	console.log('home controller init');
 
 	$ionicPlatform.ready(function () {
@@ -9,7 +9,6 @@ angular.module('starter')
 			getProfile();
 		}, function (error) {
 			$scope.showLoginButton = true;
-
 		});
 	});
 
@@ -26,8 +25,17 @@ angular.module('starter')
 		var profilePromise = fb.getProfile();
 		profilePromise.then(function (data) {
 			$scope.userDetails = data;
-		})
+      $scope.showLoginButton = false;
+		});
 	}
+
+  $scope.logout = function() {
+    var promise = fb.logout();
+    promise.then(function() {
+      $scope.userDetails = null;
+      $scope.showLoginButton = true;
+    });
+  };
 
 	//Output of this function
 	// {"id":"10152452984360124","birthday":"12/24/1986","gender":"male","name":"Aditya Saxena"}
