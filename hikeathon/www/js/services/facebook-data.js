@@ -82,6 +82,21 @@ angular.module('starter')
       return deferred.promise;
     };
 
+    var getUserInterests = function() {
+      console.log('getting user interests');
+      var deferred = $q.defer();
+      $cordovaFacebook.api('me/likes?fields=category,name', ['user_likes'])
+      .then(function(response){
+        console.log('fetched user interests');
+        console.log(JSON.stringify(response));
+        deferred.resolve(response.data);
+      }, function(error) {
+        console.log('unable to detect user likes or interests');
+        deferred.reject(error);
+      });
+      return deferred.promise;
+    };
+
 
     return {
       userID: userID,
@@ -90,6 +105,7 @@ angular.module('starter')
       getLoginStatus: getLoginStatus,
       getProfile: getProfile,
       getBestFriend: getBestFriend,
+      getUserInterests: getUserInterests,
       logout: logout
     };
   });

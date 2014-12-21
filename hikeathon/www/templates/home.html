@@ -18,5 +18,12 @@
             <div>{{ bestFriend }}</div>
           </div>
         </div>
+        <div class="card">
+            <div class="list">
+                <div class="item" ng-repeat="i in userInterests">
+                    <strong>{{i.category}}</strong>:&nbsp; {{i.name}}
+                </div>
+            </div>
+        </div>
     </ion-content>
 </ion-pane>

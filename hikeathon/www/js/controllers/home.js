@@ -7,7 +7,8 @@ angular.module('starter')
 		.then(function (data) {
 			console.log('already logged in');
 			//getProfile();
-      getBestFriend();
+			getBestFriend();
+			//getUserInterests();
 		}, function (error) {
 			$scope.showLoginButton = true;
 		});
@@ -37,6 +38,14 @@ angular.module('starter')
       $scope.bestFriend = data;
     });
   }
+
+	function getUserInterests() {
+		var promise = fb.getUserInterests();
+		promise.then(function(data) {
+			//some user interests that we will populate in the template
+			$scope.userInterests = data;
+		});
+	}
 
   $scope.logout = function() {
     var promise = fb.logout();
