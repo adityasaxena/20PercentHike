@@ -106,15 +106,32 @@ angular.module('starter')
     var getUserInterests = function() {
       console.log('getting user interests');
       var deferred = $q.defer();
-      $cordovaFacebook.api('me/likes?fields=category,name', ['user_likes'])
-      .then(function(response){
-        console.log('fetched user interests');
-        console.log(JSON.stringify(response));
-        deferred.resolve(response.data);
-      }, function(error) {
-        console.log('unable to detect user likes or interests');
-        deferred.reject(error);
-      });
+      var interests = [];
+
+      getInterests();
+
+      function getInterests(uri) {
+        var graphPath = uri || 'me/likes?fields=category,name';
+
+        $cordovaFacebook.api(graphPath, ['user_likes'])
+        .then(function(response){
+          //append to interests
+          interests = interests.concat(response.data);
+
+          if(response && response.paging && response.paging.next) {
+            var nextRequestRawURI = response.paging.next.split('https://graph.facebook.com/v2.2/')[1];
+            console.log(nextRequestRawURI);
+            getInterests(nextRequestRawURI);
+          }
+          else {
+            deferred.resolve(interests);
+          }
+        }, function(error) {
+          console.log('unable to detect user likes or interests');
+          deferred.reject(error);
+        });
+      }
+
       return deferred.promise;
     };
 
