@@ -53,13 +53,32 @@ angular.module('starter')
     var getProfile = function() {
       var deferred = $q.defer();
       console.log('initiating api for profile');
+
+      function findAge(birthday) {
+        var now = new Date().getTime();
+        var then = new Date(birthday).getTime();
+        var rawAge = now - then;
+        var days = rawAge / (1000 * 3600 * 24);
+        var years = Math.floor(days / 365);
+        var remainingDaysForMonths = days % 365;
+        var months = Math.floor(remainingDaysForMonths / 30);
+        var ageObject = {
+          years: years,
+          months: months
+        };
+        return ageObject;
+      }
+
       $cordovaFacebook.api('me?fields=id,name, gender, birthday')
         .then(function(success){
           console.log(JSON.stringify(success));
+
+          var age = findAge(success.birthday);
+
           var profile = {
             name: success.name,
             gender: success.gender,
-            birthday: success.birthday
+            age: age
           };
           deferred.resolve(profile);
         }, function(error) {
@@ -105,11 +124,10 @@ angular.module('starter')
           return e.count;
         });
 
-        console.log(JSON.stringify(sortedFriends));
-
         var secondLastIndex = sortedFriends.length - 2;
 
         var bestFriendObject = sortedFriends[secondLastIndex];
+        console.log(JSON.stringify(bestFriendObject));
 
         return bestFriendObject;
       }
