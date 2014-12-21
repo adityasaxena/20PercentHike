@@ -1,6 +1,6 @@
 // Sapy
 angular.module('starter')
-    .service('wifi', function($rootScope) {
+    .service('wifi', function($rootScope, $localStorage) {
 
         var updateRootScope = function(data) {
             $rootScope.BSSID = data[0].BSSID;
