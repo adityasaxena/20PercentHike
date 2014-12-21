@@ -51,6 +51,7 @@ angular.module('starter')
     var promise = fb.logout();
     promise.then(function() {
       $scope.userDetails = null;
+      $scope.bestFriend = null;
       $scope.showLoginButton = true;
     });
   };

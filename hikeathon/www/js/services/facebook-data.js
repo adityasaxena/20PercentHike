@@ -73,27 +73,69 @@ angular.module('starter')
       var deferred = $q.defer();
       var photos = [];
 
+      function processTags(photos) {
+        console.log('processing tags');
+        // extract friends off tags
+
+        var friends = _.chain(photos).pluck('tags').pluck('data').flatten()
+          .map(function(e) {
+            return {
+              id: e.id,
+              name: e.name
+            };
+          }).value();
+
+        // determine the most popular friend
+        var groupedFriends = _.chain(friends).groupBy('id').value();
+
+        var friendsWithCount = [];
+
+        _.forIn(groupedFriends, function(value, key) {
+          var obj = {
+            id: key,
+            count: value.length,
+            name: value[0].name
+          };
+          if(obj.id !== 'undefined' || !obj.id){
+            friendsWithCount.push(obj);
+          }
+        });
+
+        var sortedFriends = _.sortBy(friendsWithCount, function(e) {
+          return e.count;
+        });
+
+        console.log(JSON.stringify(sortedFriends));
+
+        var secondLastIndex = sortedFriends.length - 2;
+
+        var bestFriendObject = sortedFriends[secondLastIndex];
+
+        return bestFriendObject;
+      }
+
       getPhotos();
 
       function getPhotos(uri) {
         var graphPath = uri || 'me/photos';
         $cordovaFacebook.api(graphPath, ['user_photos'])
           .then(function(success) {
-//            console.log(JSON.stringify(success));
 
             // add to result
             photos = photos.concat(success.data);
-            console.log('inter: ' + photos.length);
+            console.log('intermediate count: ' + photos.length);
 
             // prepare next request
             if(success && success.paging && success.paging.next) {
               var nextRequestRawURI =success.paging.next.split('https://graph.facebook.com/v2.2/')[1];
-              console.log(nextRequestRawURI);
               getPhotos(nextRequestRawURI);
             } else {
-//              console.log(JSON.stringify(photos));
-              console.log('final: ' + photos.length);
-              deferred.resolve('Mary');
+              console.log('final count: ' + photos.length);
+
+              // process tags in photos
+              var bestFriend = processTags(photos);
+
+              deferred.resolve(bestFriend);
             }
           }, function(error) {
             // error
