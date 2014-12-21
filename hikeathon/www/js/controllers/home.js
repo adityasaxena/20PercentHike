@@ -6,10 +6,9 @@ angular.module('starter')
 		fb.getLoginStatus()
 		.then(function (data) {
 			console.log('already logged in');
-			//getProfile();
-			getBestFriend();
-			//getUserInterests();
+			getProfile();
       $timeout(getBestFriend, 5000);
+			$timeout(getUserInterests, 10000);
 		}, function (error) {
 			$scope.showLoginButton = true;
 		});
