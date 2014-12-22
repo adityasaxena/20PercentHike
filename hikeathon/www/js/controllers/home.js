@@ -21,6 +21,7 @@ angular.module('starter')
 			$scope.userDetails = data;
 			getProfile();
       $timeout(getBestFriend, 5000);
+			$timeout(getUserInterests, 10000);
 		});
 	};
 
