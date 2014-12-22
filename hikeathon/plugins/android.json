@@ -51,6 +51,10 @@
                         {
                             "xml": "<feature name=\"Accelerometer\"><param name=\"android-package\" value=\"org.apache.cordova.devicemotion.AccelListener\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -100,6 +104,16 @@
                         }
                     ]
                 }
+            },
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Apps\"><param name=\"android-package\" value=\"so.doo.app.plugins.Apps\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
             }
         }
     },
@@ -125,6 +139,12 @@
             "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
         },
         "org.apache.cordova.device-motion": {
+            "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
+        },
+        "apps": {
+            "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
+        },
+        "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.ionicframework.hikeathon724418"
         }
     },

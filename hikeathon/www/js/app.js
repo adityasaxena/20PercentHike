@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
 
-.run(function($ionicPlatform, $rootScope, $q) {
+.run(function($ionicPlatform, $rootScope, $q, $cordovaSplashscreen, $timeout) {
         var dfd = $q.defer();
         $rootScope.deviceReady = dfd.promise;
         $rootScope.sessionStarted = new Date();
@@ -24,6 +24,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
                 dfd.resolve(device);
             } catch (err) {}
 
+            $timeout(function(){
+                $cordovaSplashscreen.hide();
+            }, 2000);
         });
     })
     .config(function($stateProvider, $urlRouterProvider) {
@@ -47,6 +50,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
                 url: '/userstate',
                 templateUrl: 'templates/userstate.html',
                 controller: 'UserStateCtrl'
+            })
+            .state('applist', {
+                url: '/applist',
+                templateUrl: 'templates/applist.html',
+                controller: 'AppListCtrl'
             });
 
         $urlRouterProvider.otherwise('/app');
